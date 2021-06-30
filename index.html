@@ -1,0 +1,72 @@
+<!Doctype Html>
+<Html>
+<head>
+<body>
+
+<style>
+.myDiv {
+	text-align: center;
+	font-weight: bold;
+}
+#bt1{
+	border: none;
+        padding: 12px 40px;
+        margin: auto;
+        background-color: white;
+        font-size: 30px;
+        border-radius: 10px;
+        font-weight:bold;
+        text-align: center;
+}
+#o1{
+	border: 3px solid white;
+	width: 80%;
+	height: 60%;
+	padding: 12px 40px;
+	margin: auto;
+	background-color: white;
+	font-size: 30px;
+	overflow: scroll;
+	border-radius: 10px;
+	text-align: center;
+
+}
+body {
+	background-image: url("https://www.docker.com/sites/default/files/d8/2019-07/horizontal-logo-monochromatic-white.png");
+	background-repeat: no-repeat;
+	background-size: 100% 120%;
+	background-attachment: fixed;	
+}
+</style>
+</head>
+</Html>
+<br>
+
+<div class="myDiv"><b><h1> Docker WebApp </h1></b></div>
+
+        <h1>Enter your Docker Command:</h1>
+	<input style="font-size:30px; height:50px; width: 500px; "id = "input">
+	<button id="bt1" onclick="cmd()" class="button"> Click here to get the Output</button><b>
+</br>
+
+	<pre>
+	<br>
+	<div  id="o1">Output will be displayed here!</div>
+	</pre>
+</br>
+</div>
+
+
+<script>
+	function cmd(){
+	var i = document.getElementById("input").value
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "http://192.168.43.39/cgi-bin/doc.py?x="+i,true)
+	xhr.send();
+	xhr.onload = function(){
+	var output = xhr.responseText;
+	document.getElementById("o1").innerHTML=output;
+	}
+}
+</script>
+
